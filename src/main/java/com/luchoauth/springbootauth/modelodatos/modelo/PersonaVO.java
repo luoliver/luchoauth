@@ -1,7 +1,5 @@
 package com.luchoauth.springbootauth.modelodatos.modelo;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,12 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity(name = "PERSONA")
-public class Persona {
+public class PersonaVO {
 
 	@Id
 	@Column(name = "PERSONA_ID")
@@ -36,25 +33,14 @@ public class Persona {
 
 	@ManyToOne
 	@JoinColumn(name = "TIPO_DOCUMENTO",referencedColumnName = "CODIGO", nullable = false)
-	private TipoDocumento tipoDocumento;
+	private TipoDocumentoVO tipoDocumento;
 
 	@Column(name = "NUMERO_DOCUMENTO", nullable = false)
 	private String numeroDocumento;
 
 	@OneToOne
 	@JoinColumn(name = "USUARIO",referencedColumnName = "USUARIO_ID", nullable = false)
-	private Usuario usuario;
-
-	@OneToMany(mappedBy = "persona")
-	private List<RolPersona> listaRolPersona;
-
-	public List<RolPersona> getListaRolPersona() {
-		return listaRolPersona;
-	}
-
-	public void setListaRolPersona(List<RolPersona> listaRolPersona) {
-		this.listaRolPersona = listaRolPersona;
-	}
+	private UsuarioVO usuario;
 
 	public Integer getId() {
 		return id;
@@ -96,11 +82,11 @@ public class Persona {
 		this.segundoApellido = segundoApellido;
 	}
 
-	public TipoDocumento getTipoDocumento() {
+	public TipoDocumentoVO getTipoDocumento() {
 		return tipoDocumento;
 	}
 
-	public void setTipoDocumento(TipoDocumento tipoDocumento) {
+	public void setTipoDocumento(TipoDocumentoVO tipoDocumento) {
 		this.tipoDocumento = tipoDocumento;
 	}
 
@@ -112,11 +98,11 @@ public class Persona {
 		this.numeroDocumento = numeroDocumento;
 	}
 
-	public Usuario getUsuario() {
+	public UsuarioVO getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(UsuarioVO usuario) {
 		this.usuario = usuario;
 	}
 

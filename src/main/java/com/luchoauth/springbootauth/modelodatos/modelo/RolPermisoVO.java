@@ -9,22 +9,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
-@Entity(name = "ROL_PROYECTO")
-public class RolProyecto {
+@Entity(name = "ROL_PERMISO")
+public class RolPermisoVO {
 
 	@Id
-	@Column(name = "ROL_PROYECTO_ID")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ROL_PROYECTO_SEQ")
-	@SequenceGenerator(sequenceName = "ROL_PROYECTO_SEQ", allocationSize = 1, name = "ROL_PROYECTO_SEQ")
+	@Column(name = "ROL_PERMISO_ID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ROL_PERMISO_SEQ")
+	@SequenceGenerator(sequenceName = "ROL_PERMISO_SEQ", allocationSize = 1, name = "ROL_PERMISO_SEQ")
 	private Integer id;
 
 	@ManyToOne
 	@JoinColumn(name = "ROL",referencedColumnName = "ROL_ID", nullable = false)
-	private Rol rol;
+	private RolVO rol;
 
 	@ManyToOne
-	@JoinColumn(name = "PROYECTO",referencedColumnName = "PROYECTO_ID", nullable = false)
-	private Proyecto proyecto;
+	@JoinColumn(name = "PERMISO",referencedColumnName = "PERMISO_ID", nullable = false)
+	private PermisoVO permiso;
 
 	public Integer getId() {
 		return id;
@@ -34,20 +34,19 @@ public class RolProyecto {
 		this.id = id;
 	}
 
-	public Rol getRol() {
+	public RolVO getRol() {
 		return rol;
 	}
 
-	public void setRol(Rol rol) {
+	public void setRol(RolVO rol) {
 		this.rol = rol;
 	}
 
-	public Proyecto getProyecto() {
-		return proyecto;
+	public PermisoVO getPermiso() {
+		return permiso;
 	}
 
-	public void setProyecto(Proyecto proyecto) {
-		this.proyecto = proyecto;
+	public void setPermiso(PermisoVO permiso) {
+		this.permiso = permiso;
 	}
-
 }

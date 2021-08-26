@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity(name = "PERMISO")
-public class Permiso {
+public class PermisoVO {
 
 	@Id
 	@Column(name = "PERMISO_ID")
@@ -26,13 +26,13 @@ public class Permiso {
 	private String descripcion;
 
 	@OneToMany(mappedBy = "permiso")
-	private List<RolPermiso> listaRolPermiso;
+	private List<RolPermisoVO> listaRolPermiso;
 
-	public List<RolPermiso> getListaRolPermiso() {
+	public List<RolPermisoVO> getListaRolPermiso() {
 		return listaRolPermiso;
 	}
 
-	public void setListaRolPermiso(List<RolPermiso> listaRolPermiso) {
+	public void setListaRolPermiso(List<RolPermisoVO> listaRolPermiso) {
 		this.listaRolPermiso = listaRolPermiso;
 	}
 

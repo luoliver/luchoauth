@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity(name = "TIPO_DOCUMENTO")
-public class TipoDocumento {
+public class TipoDocumentoVO {
 
 	@Id
 	@Column(name = "CODIGO")
@@ -21,13 +21,13 @@ public class TipoDocumento {
 	private String descripcion;
 
 	@OneToMany(mappedBy = "tipoDocumento")
-	private List<Persona> listaPersonas;
+	private List<PersonaVO> listaPersonas;
 
-	public List<Persona> getListaPersonas() {
+	public List<PersonaVO> getListaPersonas() {
 		return listaPersonas;
 	}
 
-	public void setListaPersonas(List<Persona> listaPersonas) {
+	public void setListaPersonas(List<PersonaVO> listaPersonas) {
 		this.listaPersonas = listaPersonas;
 	}
 

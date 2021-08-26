@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity(name = "PROYECTO")
-public class Proyecto {
+public class ProyectoVO {
 
 	@Id
 	@Column(name = "PROYECTO_ID")
@@ -29,13 +29,13 @@ public class Proyecto {
 	private String actualVersion;
 
 	@OneToMany(mappedBy = "proyecto")
-	private List<RolProyecto> listaRolProyecto;
+	private List<RolVO> listaRolProyecto;
 
-	public List<RolProyecto> getListaRolProyecto() {
+	public List<RolVO> getListaRolProyecto() {
 		return listaRolProyecto;
 	}
 
-	public void setListaRolProyecto(List<RolProyecto> listaRolProyecto) {
+	public void setListaRolProyecto(List<RolVO> listaRolProyecto) {
 		this.listaRolProyecto = listaRolProyecto;
 	}
 

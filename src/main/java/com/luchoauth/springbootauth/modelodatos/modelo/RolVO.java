@@ -7,11 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity(name = "ROL")
-public class Rol {
+public class RolVO {
 
 	@Id
 	@Column(name = "ROL_ID")
@@ -26,13 +28,14 @@ public class Rol {
 	private String descripcion;
 
 	@OneToMany(mappedBy = "rol")
-	private List<RolPermiso> listaRolPermiso;
+	private List<RolPermisoVO> listaRolPermiso;
 	
 	@OneToMany(mappedBy = "rol")
-	private List<RolPersona> listaRolPersona;
+	private List<RolUsuarioVO> listaRolUsuario;
 
-	@OneToMany(mappedBy = "rol")
-	private List<RolProyecto> listaRolProyecto;
+	@ManyToOne
+	@JoinColumn(name = "PROYECTO",referencedColumnName = "PROYECTO_ID", nullable = false)
+	private ProyectoVO proyecto;
 
 	public Integer getId() {
 		return id;
@@ -58,28 +61,28 @@ public class Rol {
 		this.descripcion = descripcion;
 	}
 
-	public List<RolPermiso> getListaRolPermiso() {
+	public List<RolPermisoVO> getListaRolPermiso() {
 		return listaRolPermiso;
 	}
 
-	public void setListaRolPermiso(List<RolPermiso> listaRolPermiso) {
+	public void setListaRolPermiso(List<RolPermisoVO> listaRolPermiso) {
 		this.listaRolPermiso = listaRolPermiso;
 	}
 
-	public List<RolPersona> getListaRolPersona() {
-		return listaRolPersona;
+	public List<RolUsuarioVO> getListaRolUsuario() {
+		return listaRolUsuario;
 	}
 
-	public void setListaRolPersona(List<RolPersona> listaRolPersona) {
-		this.listaRolPersona = listaRolPersona;
+	public void setListaRolUsuario(List<RolUsuarioVO> listaRolUsuario) {
+		this.listaRolUsuario = listaRolUsuario;
 	}
 
-	public List<RolProyecto> getListaRolProyecto() {
-		return listaRolProyecto;
+	public ProyectoVO getProyecto() {
+		return proyecto;
 	}
 
-	public void setListaRolProyecto(List<RolProyecto> listaRolProyecto) {
-		this.listaRolProyecto = listaRolProyecto;
+	public void setProyecto(ProyectoVO proyecto) {
+		this.proyecto = proyecto;
 	}
 
 }

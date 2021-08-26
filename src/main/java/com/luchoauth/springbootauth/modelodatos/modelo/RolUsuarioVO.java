@@ -9,22 +9,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
-@Entity(name = "ROL_PERSONA")
-public class RolPersona {
+@Entity(name = "ROL_USUARIO")
+public class RolUsuarioVO {
 
 	@Id
-	@Column(name = "ROL_PERSONA_ID")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ROL_PERSONA_SEQ")
-	@SequenceGenerator(sequenceName = "ROL_PERSONA_SEQ", allocationSize = 1, name = "ROL_PERSONA_SEQ")
+	@Column(name = "ROL_USUARIO_ID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ROL_USUARIO_SEQ")
+	@SequenceGenerator(sequenceName = "ROL_USUARIO_SEQ", allocationSize = 1, name = "ROL_USUARIO_SEQ")
 	private Integer id;
 
 	@ManyToOne
 	@JoinColumn(name = "ROL",referencedColumnName = "ROL_ID", nullable = false)
-	private Rol rol;
+	private RolVO rol;
 
 	@ManyToOne
-	@JoinColumn(name = "PERSONA",referencedColumnName = "PERSONA_ID", nullable = false)
-	private Persona persona;
+	@JoinColumn(name = "USUARIO",referencedColumnName = "USUARIO_ID", nullable = false)
+	private UsuarioVO usuario;
 
 	public Integer getId() {
 		return id;
@@ -34,19 +34,20 @@ public class RolPersona {
 		this.id = id;
 	}
 
-	public Rol getRol() {
+	public RolVO getRol() {
 		return rol;
 	}
 
-	public void setRol(Rol rol) {
+	public void setRol(RolVO rol) {
 		this.rol = rol;
 	}
 
-	public Persona getPersona() {
-		return persona;
+	public UsuarioVO getUsuario() {
+		return usuario;
 	}
 
-	public void setPersona(Persona persona) {
-		this.persona = persona;
+	public void setUsuario(UsuarioVO usuario) {
+		this.usuario = usuario;
 	}
+
 }

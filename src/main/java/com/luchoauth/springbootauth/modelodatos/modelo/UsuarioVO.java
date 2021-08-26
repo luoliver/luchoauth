@@ -1,17 +1,19 @@
 package com.luchoauth.springbootauth.modelodatos.modelo;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity(name = "USUARIO")
-public class Usuario {
+public class UsuarioVO {
 
 	@Id
 	@Column(name = "USUARIO_ID")
@@ -35,13 +37,24 @@ public class Usuario {
 	private Date fechaCambioContrasena;
 
 	@OneToOne(mappedBy = "usuario")
-	private Persona persona;
+	private PersonaVO persona;
+	
+	@OneToMany(mappedBy = "usuario")
+	private List<RolUsuarioVO> listaRolUsuario;
 
-	public Persona getPersona() {
+	public List<RolUsuarioVO> getListaRolUsuario() {
+		return listaRolUsuario;
+	}
+
+	public void setListaRolUsuario(List<RolUsuarioVO> listaRolUsuario) {
+		this.listaRolUsuario = listaRolUsuario;
+	}
+
+	public PersonaVO getPersona() {
 		return persona;
 	}
 
-	public void setPersona(Persona persona) {
+	public void setPersona(PersonaVO persona) {
 		this.persona = persona;
 	}
 
